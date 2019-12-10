@@ -32,6 +32,7 @@ var DEFAULT_SCRIPTS_COMBINED = [
     "system/firstPersonHMD.js",
     "system/tablet-ui/tabletUI.js",
     "system/emote.js",
+    "system/chat.js",
     "system/miniTablet.js",
     "system/audioMuteOverlay.js",
     "system/keyboardShortcuts/keyboardShortcuts.js"
