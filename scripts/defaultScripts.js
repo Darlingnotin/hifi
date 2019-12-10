@@ -34,6 +34,7 @@ var DEFAULT_SCRIPTS_COMBINED = [
     "system/emote.js",
     "system/chat.js",
     "system/DarlingVRGoTo/goToDecentral.js",
+    "system/DarlingVRGoTo/app-portalDropper.js",
     "system/miniTablet.js",
     "system/audioMuteOverlay.js",
     "system/keyboardShortcuts/keyboardShortcuts.js"
