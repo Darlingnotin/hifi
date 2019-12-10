@@ -33,6 +33,7 @@ var DEFAULT_SCRIPTS_COMBINED = [
     "system/tablet-ui/tabletUI.js",
     "system/emote.js",
     "system/chat.js",
+    "system/DarlingVRGoTo/goToDecentral.js",
     "system/miniTablet.js",
     "system/audioMuteOverlay.js",
     "system/keyboardShortcuts/keyboardShortcuts.js"
