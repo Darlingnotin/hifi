@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>appHTML</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700" rel="stylesheet">
+    <meta content="width=480, initial-scale=1" name="viewport">
+    <style>
+        body {
+            margin: 0;
+            width: 100%;
+            font-family: 'Raleway', sans-serif;
+            background: #4527a0;
+        }
+
+        table {
+            align-items: center;
+            border: none;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .content {
+            margin-top: 40px;
+            padding: 0px;
+        }
+
+        .button {
+            padding: 10px 10px;
+            height: 120px;
+            width: 120px;
+            border-radius: 5px;
+            font-size: 80px;
+        }
+
+        button[type=button] {
+            font-family: 'Raleway';
+            font-weight: bold;
+            font-size: 60px;
+            text-transform: uppercase;
+            vertical-align: top;
+            height: 90px;
+            min-width: 90%;
+            padding: 0px 5px;
+            margin-right: 6px;
+            border-radius: 15px;
+            border: none;
+            color: #fff;
+            background-color: #000;
+            background: linear-gradient(#343434 20%, #000 100%);
+            cursor: pointer;
+        }
+
+        button[type=button].red {
+            color: #fff;
+            background-color: #94132e;
+            background: linear-gradient(#d42043 20%, #94132e 100%);
+        }
+
+        button[type=button].red:enabled:hover {
+            background: linear-gradient(#d42043, #d42043);
+            border: none;
+        }
+
+        button[type=button]:active {
+            background: linear-gradient(#343434, #343434);
+        }
+
+        button[type=button].red:enabled:hover:active {
+            background: linear-gradient(#94132e, #94132e);
+        }
+
+        button[type=button]:disabled {
+            color: #252525;
+            background: linear-gradient(#575757 20%, #252525 100%);
+        }
+
+        button[type=button][pressed=pressed].red {
+            color: #5c0d1d;
+        }
+
+        .appName {
+            color: #ffffff;
+            left: 50%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            vertical-align: top;
+        }
+
+        .textarea {
+            font-size: 20px;
+            resize: none;
+            outline: none;
+            width: 80%;
+            padding: 10px;
+            height: 20px;
+            margin: -10px;
+            border: 2px solid #001759;
+        }
+
+        .text {
+            color: #FFF;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            max-width: 470px;
+            font-family: 'Raleway';
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            text-shadow: -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+        }
+
+        .appInstructions {
+            text-align: left;
+            color: #ffffff;
+            left: 50%;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            vertical-align: top;
+        }
+
+        .slideScreen {
+            height: 100%;
+            width: 480px;
+            position: fixed;
+            z-index: 1;
+            top: 45px;
+            left: 100%;
+            background-color: #4527a0;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .slideScreen a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .slideScreen a:hover {
+            color: #f1f1f1;
+        }
+
+        .slideScreen .closebtn {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 10px;
+            text-transform: uppercase;
+            font-family: 'Raleway';
+            font-weight: bold;
+            font-size: 36px;
+            margin-left: 0px;
+        }
+
+        .slideButton {
+            color: #ffffff;
+            cursor: pointer;
+            padding-top: 12px;
+            padding-left: 28px;
+            padding-bottom: 12px;
+            text-transform: uppercase;
+            font-family: 'Raleway';
+            font-weight: bold;
+            font-size: 18px;
+            text-align: left;
+            border-top: 1px solid #53517f;
+            border-bottom: 1px solid #53517f;
+        }
+
+        .slideButton .arrow {
+            color: #ffffff;
+            font-size: 36px;
+            padding-right: 20px;
+            text-align: left;
+            vertical-align: middle;
+            margin-left: 60px;
+            font-weight: bold;
+        }
+
+        .slideButton .label {
+            left: 30px;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-align: left;
+            vertical-align: middle;
+            font-family: 'Raleway';
+            font-weight: bold;
+            font-size: 18px;
+            text-align: left;
+        }
+
+    </style>
+    <style>
+    </style>
+</head>
+<body>
+<div align="center" class="content">
+    <table align="center" border="0" class="table" width="100%">
+        <tbody>
+        <tr>
+            <td>
+                <div style="padding-top: 8px"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="appName" style="font-size: 60px;">
+                    PortalDropper
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="padding-top: 45px"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="portalBox" type="text" value='hifi://' class="textarea"/>
+                <div style="padding-top: 8px"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="button red" id="Portal" type="button">Portal!</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="padding-top: 25px"></div>
+                <table id="history" align="center" border="0" class="table inner" width="100%">
+                    <tbody>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="padding-top: 15px"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="slideButton" onclick="openSlideScreen('Instructions')">
+                    <table border="0" width="0">
+                        <tbody>
+                        <tr>
+                            <td width="100%">
+                                <div class="label">
+                                    Instructions
+                                </div>
+                            </td>
+                            <td width="100%"><span class="arrow">▶</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="slideScreen appInstructions" id="Instructions"
+     style="font-size: 18px; padding-left: 20px; padding-right: 20px; max-width:450px">
+    <div class="closebtn" onclick="closeSlideScreen('Instructions')">
+        ◀
+    </div>
+    <span style="font-weight:bold">How to use the PortalDropper:</span><br>
+    Put or type the hifi:// url into the box and click on PORTAL! to drop a portal for you and anyone who is running the script!<br/>
+    <br/>
+    Up to ten previous locations you have typed in will be stored beneath the PORTAL! button, simply click on the hifi://urls to select and hit PORTAL! to drop the portal!
+    <br/>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script>
+
+    function openSlideScreen(element) {
+        document.getElementById(element).style.left = "0%";
+    }
+
+    function closeSlideScreen(element) {
+        document.getElementById(element).style.left = "100%";
+    }
+
+    var appUUID;
+    var locHistory = ["hifi://"];
+
+    function emitWebEvent(obj) {
+        if (window.qt) {
+            obj.appUUID = appUUID; // Appends the appUUID for checking that its from the correct html/qml.
+            EventBridge.emitWebEvent(JSON.stringify(obj)); // So you can just send a JSON object without having to stringify.
+        }
+    }
+
+    function randomIntFromInterval(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    function generateName(length) {
+        var name = "";
+        var characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        for (var i = 0; i < length; i++) {
+            name += characters[randomIntFromInterval(0, characters.length - 1)];
+        }
+        return name;
+    }
+
+    function generateTable(keys) {
+        var t = $('#history > tbody:last-child');
+        t.empty();
+        var length = keys.length;
+        for (var i = length - 1; i >= 0; i--) {
+            var key = keys[i];
+            var id = generateName(5);
+            console.log(key);
+            t.append('<tr id="' + id + '"><td height="20px"><div><span class=\'text\'>' + key + '</span></div></td></tr>');
+            setClicks(id);
+        }
+    }
+
+    function syncLocHistory() {
+        emitWebEvent({"historySync": locHistory.join()});
+    }
+
+    function setClicks(callback) {
+        $("#" + callback).on("mousedown", start).on("touchstart", start).on("click", click).on("mouseout", cancel).on("touchend", cancel).on("touchleave", cancel).on("touchcancel", cancel);
+    }
+
+    var longpress = false;
+    var presstimer = null;
+    var longtarget = null;
+
+    function cancel(e) {
+        if (presstimer !== null) {
+            /*if (e.type == "touchend") {
+                click(e);
+            }*/
+            click(e);
+            clearTimeout(presstimer);
+            presstimer = null;
+        }
+    }
+
+    function click(e) {
+
+        console.log(e);
+
+        if (presstimer !== null) {
+            clearTimeout(presstimer);
+            presstimer = null;
+        }
+
+
+        if (longpress) {
+            return false;
+        }
+        console.log("Clicked on " + e.currentTarget.id);
+
+        var a = $("#" + e.currentTarget.id);
+
+        $("#portalBox").val(a.children().children().children().html());
+
+        console.log("thing2 " + a.children().children().children().html());
+        // alert("thing2 "+e.currentTarget.id);
+
+    }
+
+    function start(e) {
+
+        if (e.type === "click" && e.button !== 0) {
+            return;
+        }
+
+        longpress = false;
+
+        $("#" + e.currentTarget.id).addClass("longpress");
+
+        if (presstimer === null) {
+            presstimer = setTimeout(function () {
+                longpress = true;
+            }, 1000);
+        }
+
+        return false;
+    }
+
+    function main() {
+
+        var parsedUrl = new URL(window.location.href);
+        appUUID = parsedUrl.searchParams.get("appUUID");
+
+        if (window.qt) {
+            setTimeout(function () {
+                console.log("connecting to eventbridge");
+                EventBridge.scriptEventReceived.connect(function (message) {
+                    console.log(message);
+                    var data = JSON.parse(message);
+                    if (data.appUUID === appUUID) {
+                        if (data.historySync) {
+                            locHistory = data.historySync.split(",");
+                            generateTable(locHistory);
+                        }
+                    }
+                });
+            }, 100); // Delay to allow everything to settle
+        }
+
+        if (window.qt) {
+            setTimeout(function () {
+                emitWebEvent({
+                    "type": "ready"
+                });
+            }, 250); // Delay to allow everything to settle
+            console.log("sending ready signal!");
+        }
+
+        $("#Portal").click(function () {
+            var loc = $("#portalBox").val();
+            if (locHistory.indexOf(loc) === -1) {
+                if (locHistory.length === 10) {
+                    locHistory.shift();
+                }
+                locHistory.push(loc);
+                syncLocHistory();
+                generateTable(locHistory);
+            }
+            console.log({"loc": loc});
+            emitWebEvent({"loc": loc}); // Send to the interface script
+        });
+    }
+
+    generateTable(locHistory);
+    $(document).ready(main);
+
+</script>
+</body>
+</html>
