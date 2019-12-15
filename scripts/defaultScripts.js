@@ -21,12 +21,8 @@ var DEFAULT_SCRIPTS_COMBINED = [
     "system/bubble.js",
     "system/snapshot.js",
     "system/pal.js", // "system/mod.js", // older UX, if you prefer
-    "system/avatarapp.js",
     "system/makeUserConnection.js",
-    "system/tablet-goto.js",
-    "system/marketplaces/marketplaces.js",
     "system/notifications.js",
-    "system/commerce/wallet.js",
     "system/create/edit.js",
     "system/dialTone.js",
     "system/firstPersonHMD.js",
